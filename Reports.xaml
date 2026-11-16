@@ -1,0 +1,35 @@
+﻿<Window x:Class="ЗаданиеЮшкова.Reports"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ЗаданиеЮшкова"
+        mc:Ignorable="d"
+        Title="Reports" Height="450" Width="800">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0" Text="Количество заявок по статусам:"
+                   FontWeight="Bold" Margin="0,0,0,5"/>
+        <DataGrid Grid.Row="1" x:Name="StatusCountGrid"
+                  AutoGenerateColumns="False" IsReadOnly="True" Height="120" Margin="0,0,0,15">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Статус"    Binding="{Binding Status}" Width="150"/>
+                <DataGridTextColumn Header="Количество" Binding="{Binding Count}"  Width="*"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+        <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,0,0,10">
+            <TextBlock Text="Среднее время решения:" FontWeight="Bold" Margin="0,0,10,0"/>
+            <TextBlock x:Name="AvgTimeText" Text="—"/>
+        </StackPanel>
+
+        <TextBlock Grid.Row="3" Text="Просроченные заявки (SLA истёк):"
+                   FontWeight="Bold" Margin="0,0,0,5" VerticalAlignment="Top"/>
+    </Grid>
+</Window>
